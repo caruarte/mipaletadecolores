@@ -146,15 +146,15 @@ function combinar(colores_elegidos) {
         combinar_screen.querySelector("#doscolores").appendChild(color);
 
         // Combinacion
-        let rgb = colores[colores_elegidos[i]]["color"].replace(/[^\d,]/g, '').split(',');
-        coloresMezcla.push($.Color(rgbToHex.apply(this, rgb)));
+        let rgb = colores[colores_elegidos[i]]["color"];
+        coloresMezcla.push(rgb);
     }
 
-    result_color = Color_mixer.mix(coloresMezcla);
+    let mixed = mixbox.lerp(colores[colores_elegidos[0]]["color"], colores[colores_elegidos[1]]["color"], 0.5);
     console.log("llegue");
     let color = document.createElement("div");
     color.classList.add("circulo");
-    color.style.backgroundColor = result_color.toHexString();
+    color.style.backgroundColor = mixed;
     combinar_screen.querySelector("#combinacion").appendChild(color)
 }
 
@@ -176,13 +176,4 @@ function shuffle(array) {
     }
 
     return array;
-}
-
-function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-}
-
-function rgbToHex(r, g, b) {
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
