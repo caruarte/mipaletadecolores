@@ -20,6 +20,10 @@ body {
 
 /**GLOBALES **/
 
+a {
+    text-decoration: none;
+}
+
 .flex {
     display: flex;
     justify-content: space-evenly;
@@ -210,6 +214,9 @@ input:not([type="submit"]) {
 .seccion {
     margin: 5rem auto;
 }
+
+
+/* Paletas */
 
 .paleta {
     margin: 5rem 0;

@@ -4,16 +4,12 @@ var closeIcon = document.querySelector(".closeIcon");
 var menuIcon = document.querySelector(".menuIcon");
 
 
-var intro_screen = document.querySelector("#intro_screen");
-var btn_comenzar = intro_screen.querySelector(".boton");
-
-
 var paletas = [];
 var intereses = [];
 var paleta_elegida = [];
 var colores = {};
 
-var state = "intro";
+var state = "charla";
 
 var colores_elegidos = [];
 
@@ -56,10 +52,4 @@ links_navegacion.forEach(
     }
 )
 
-// INTRO
-
-btn_comenzar.onclick = () => { // Si tocar boton de comenzar
-    state = "preguntas";
-    btn_terminar.classList.add("ocultar");
-    numeroIntereses.innerHTML = "<h3>" + intereses.length + "/5";
-}
+// CHARLA

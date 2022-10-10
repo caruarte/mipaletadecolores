@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mi paleta de colores</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <script src="https://kit.fontawesome.com/1fe42dc694.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+    <header class="barra">
+        <div class="contenedor contenido-barra">
+            <h1 class="logo">
+                <a href="index.html">Mi Paleta de Colores</a>
+            </h1>
+            <div class="hamburger">
+                <i class="fas fa-bars menuIcon"></i>
+                <i class="fas fa-times closeIcon"></i>
+            </div>
+            <nav class="navegacion-principal">
+                <a href="paleta.html">Hacé tu paleta</a>
+                <a href="charla.html">Charla</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+    <section class="seccion contenedor">
+        <div id="preguntas_screen">
+            <label for="interes">Escribí algo que te guste hacer o que te interese: </label>
+            <input id="interes" type="text" required>
+            <div id="numeroIntereses"></div>
+            <div id="siguiente" class="centrar">
+                <button class="boton boton-amarillo">Siguiente</button>
+            </div>
+            <div id="terminar" class="centrar">
+                <button class="boton boton-verde">Elegí tu paleta</button>
+            </div>
+        </div>
+        <div id="paletas_screen" class="ocultar">
+
+            <h2>Elegí tu paleta de colores:</h2>
+
+        </div>
+        <div id="doscolores_screen" class="ocultar">
+
+            <h2>Elegí dos colores:</h2>
+
+        </div>
+        <div id="combinar_screen" class="ocultar">
+
+            <h2>¿Cómo los podrías combinar?</h2>
+            <div id="doscolores"></div>
+            <div id="combinacion"></div>
+            <input id="combinacion_interes" type="text" required>
+            <div id="btn_combinar" class="centrar">
+                <button class="boton boton-verde">Combinar</button>
+            </div>
+        </div>
+        <div id="tupaleta_screen" class="ocultar">
+
+            <h2>Mi Paleta de Colores</h2>
+            <div id="tupaleta"></div>
+            <div id="btn_paleta" class="centrar">
+                <button class="boton boton-verde">Seguí combinando</button>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div>
+                <h2>Mi Paleta de Colores</h2>
+                <p>Creado por: César Ruarte</p>
+            </div>
+
+            <nav class="redes-sociales">
+                <a href="https://www.facebook.com/cesar.a.ruarte" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/cesarruarte" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCimM0D_EhOPUj31o61eNqNA" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/cesarruarte/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </nav>
+        </div>
+    </footer>
+    <script src="https://scrtwpns.com/mixbox.js"></script>
+    <script src="js/paleta.js"></script>
+</body>
+
+</html>
