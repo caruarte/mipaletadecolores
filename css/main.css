@@ -12,6 +12,9 @@ html {
 body {
     background-color: #ffffff;
     font-family: 'PT Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -249,6 +252,56 @@ input:not([type="submit"]) {
     #tupaleta_screen #tupaleta {
         grid-template-columns: repeat(4, 1fr);
     }
+}
+
+
+/**Footer**/
+
+.site-footer {
+    background-color: #FFA97A;
+    margin-top: 2rem;
+    color: #ffffff;
+    margin-top: auto;
+}
+
+.site-footer i {
+    color: #ffffff;
+    font-size: 3rem;
+    margin-left: 3rem;
+}
+
+.site-footer i:hover {
+    color: #dddddd;
+}
+
+.site-footer .contenedor {
+    padding: 4rem;
+}
+
+@media (min-width: 768px) {
+    .site-footer .contenedor {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .site-footer .contenedor>* {
+        flex: 0 0 calc(50% - 1rem);
+    }
+    .site-footer .redes-sociales {
+        display: flex;
+        justify-content: end;
+    }
+}
+
+.site-footer h3 {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: var(--oswald);
+    margin-bottom: 2rem;
+}
+
+footer .menu .redes-sociales {
+    text-align: left;
 }
 
 
