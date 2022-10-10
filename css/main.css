@@ -77,7 +77,7 @@ input:not([type="submit"]) {
     font-size: 1.8rem;
     padding: 1rem 3rem;
     display: inline-block;
-    margin-top: 3rem;
+    margin: 3rem;
     text-align: center;
     border: none;
     border-radius: 5rem;
@@ -219,6 +219,36 @@ input:not([type="submit"]) {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
+}
+
+#combinar_screen #combinacion {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+#tupaleta_screen #tupaleta {
+    margin: 5rem 0;
+    width: auto;
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+@media (min-width: 768px) {
+    #tupaleta_screen #tupaleta {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1250px) {
+    #tupaleta_screen #tupaleta {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 

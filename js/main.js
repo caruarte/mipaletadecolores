@@ -1,13 +1,25 @@
 var intro_screen = document.querySelector("#intro_screen");
-var preguntas_screen = document.querySelector("#preguntas_screen");
-var paletas_screen = document.querySelector("#paletas_screen");
-var doscolores_screen = document.querySelector("#doscolores_screen");
-var combinar_screen = document.querySelector("#combinar_screen");
 var btn_comenzar = intro_screen.querySelector(".boton");
+
+var preguntas_screen = document.querySelector("#preguntas_screen");
 var btn_siguiente = preguntas_screen.querySelector("#siguiente button");
 var numeroIntereses = preguntas_screen.querySelector("#numeroIntereses");
 var interes = preguntas_screen.querySelector("#interes");
-var btn_paleta = preguntas_screen.querySelector("#terminar button");
+var btn_terminar = preguntas_screen.querySelector("#terminar button");
+
+var paletas_screen = document.querySelector("#paletas_screen");
+
+var doscolores_screen = document.querySelector("#doscolores_screen");
+
+var combinar_screen = document.querySelector("#combinar_screen");
+var combinacion_interes = combinar_screen.querySelector("#combinacion_interes");
+var btn_combinar = combinar_screen.querySelector("#btn_combinar button");
+
+var tupaleta_screen = document.querySelector("#tupaleta_screen");
+var btn_paleta = tupaleta_screen.querySelector("#btn_paleta button");
+
+
+
 var letters = '0123456789ABCDEF';
 
 var paletas = [];
@@ -23,7 +35,7 @@ var colores_elegidos = [];
 btn_comenzar.onclick = () => { // Si tocar boton de comenzar
     preguntas_screen.classList.remove("ocultar");
     state = "preguntas";
-    btn_paleta.classList.add("ocultar");
+    btn_terminar.classList.add("ocultar");
     intro_screen.classList.add("ocultar")
     numeroIntereses.innerHTML = "<h3>" + intereses.length + "/5";
 }
@@ -33,7 +45,7 @@ btn_siguiente.onclick = () => { //Pantalla intereses
         intereses.push(interes.value);
         numeroIntereses.innerHTML = "<h3>" + intereses.length + "/5";
         if (intereses.length == 5) { // Cuando haya 5 intereses
-            btn_paleta.classList.remove("ocultar");
+            btn_terminar.classList.remove("ocultar");
 
             btn_siguiente.classList.add("ocultar");
             interes.disabled = true;
@@ -42,7 +54,7 @@ btn_siguiente.onclick = () => { //Pantalla intereses
     interes.value = "";
 }
 
-btn_paleta.onclick = () => { // Si toca el boton de elegi tu paleta
+btn_terminar.onclick = () => { // Si toca el boton de elegi tu paleta
     state = "paletas";
     shuffle(intereses);
     paletas_screen.classList.remove("ocultar");
@@ -101,9 +113,13 @@ function paletaElegida(paleta) { // Si elegis una paleta
     paleta_elegida = paleta.querySelectorAll('.circulo');
     for (let i = 0; i < paleta_elegida.length; i++) { // Asignar un interes a cada color de la paleta
         paleta_elegida[i].id = "color" + (i + 1);
+
+
         colores[paleta_elegida[i].id] = {}
         colores[paleta_elegida[i].id]["color"] = paleta_elegida[i].style.backgroundColor;
         colores[paleta_elegida[i].id]["interes"] = intereses[i];
+
+
         paleta_elegida[i].addEventListener('click', (e) => { // Si hace click en un color
             if (state == "dos_colores") {
                 console.log(colores[paleta_elegida[i].id]);
@@ -114,7 +130,7 @@ function paletaElegida(paleta) { // Si elegis una paleta
                         revelar.classList.remove("ocultar");
                         revelar.onclick = () => { // Si hace click en combinar
                             combinar_screen.classList.remove("ocultar");
-                            state = "combinar"
+                            state = "combinar";
                             doscolores_screen.classList.add("ocultar");
                             combinar(colores_elegidos);
                         }
@@ -136,10 +152,14 @@ function paletaElegida(paleta) { // Si elegis una paleta
 
 function combinar(colores_elegidos) {
     let coloresMezcla = [];
+    combinar_screen.querySelector("#doscolores").innerHTML = '';
+    combinar_screen.querySelector("#combinacion").innerHTML = '';
     for (let i = 0; i < colores_elegidos.length; i++) { // Mostrar dos colores con sus respectivos intereses
-        document.querySelector("#" + colores_elegidos[i]).classList.remove("color_elegido");
         let color = document.createElement("div");
-        color.appendChild(document.querySelector("#" + colores_elegidos[i]));
+        let circulo = document.createElement("div");
+        circulo.classList.add("circulo");
+        circulo.style.backgroundColor = colores[colores_elegidos[i]].color;
+        color.appendChild(circulo);
         let interes_texto = document.createElement("h3");
         interes_texto.innerHTML = colores[colores_elegidos[i]].interes
         color.appendChild(interes_texto);
@@ -151,11 +171,65 @@ function combinar(colores_elegidos) {
     }
 
     let mixed = mixbox.lerp(colores[colores_elegidos[0]]["color"], colores[colores_elegidos[1]]["color"], 0.5);
-    console.log("llegue");
+    console.log(mixed);
     let color = document.createElement("div");
     color.classList.add("circulo");
+    color.id = "color" + (Object.keys(colores).length + 1);
     color.style.backgroundColor = mixed;
+    colores["color" + (Object.keys(colores).length + 1)] = {}
+    colores["color" + (Object.keys(colores).length)]["color"] = color.style.backgroundColor;
     combinar_screen.querySelector("#combinacion").appendChild(color)
+}
+
+btn_combinar.onclick = () => { // Click en combinar
+    if (combinacion_interes.value.replace(/\s+/g, '').length != 0) {
+
+        intereses.push(combinacion_interes.value);
+        colores["color" + (Object.keys(colores).length)]["interes"] = combinacion_interes.value;
+        combinar_screen.classList.add("ocultar");
+        tupaleta_screen.classList.remove("ocultar");
+        state = "tupaleta";
+        tupaleta(colores);
+
+    }
+    combinacion_interes.value = "";
+}
+
+
+function tupaleta(colores) {
+    tupaleta_screen.querySelector("#tupaleta").innerHTML = ''; // Reiniciar
+    for (let i = 0; i < Object.keys(colores).length; i++) {
+        let color = document.createElement("div");
+        let circulo = document.createElement("div");
+        circulo.classList.add("circulo");
+        circulo.style.backgroundColor = colores["color" + (i + 1)].color;
+        color.appendChild(circulo)
+        let interes_texto = document.createElement("h3");
+        interes_texto.innerHTML = colores["color" + (i + 1)].interes;
+        color.appendChild(interes_texto);
+        tupaleta_screen.querySelector("#tupaleta").appendChild(color);
+    }
+}
+
+btn_paleta.onclick = () => { // Click en segui combinando
+    colores_elegidos = [];
+    while (true) {
+        let random = Math.floor(Math.random() * (Object.keys(colores).length - 1 + 1) + 1);
+        console.log(random);
+        let index = colores_elegidos.indexOf("color" + random);
+        console.log(index);
+        if (!(index > -1)) { // when item is not found
+            colores_elegidos.push("color" + random);
+            if (colores_elegidos.length == 2) {
+                break;
+            }
+        }
+
+    }
+    combinar_screen.classList.remove("ocultar");
+    tupaleta_screen.classList.add("ocultar");
+    state = "combinar";
+    combinar(colores_elegidos);
 }
 
 function shuffle(array) {
