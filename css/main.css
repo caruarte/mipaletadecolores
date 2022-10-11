@@ -302,6 +302,12 @@ input:not([type="submit"]) {
     text-align: center;
 }
 
+#tupaleta_screen h2 {
+    text-align: center;
+    padding-top: 3rem;
+    margin-top: 0;
+}
+
 #tupaleta_screen #tupaleta {
     margin: 5rem 0;
     width: auto;
@@ -323,6 +329,13 @@ input:not([type="submit"]) {
 @media (min-width: 1250px) {
     #tupaleta_screen #tupaleta {
         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    #botones_tupaleta {
+        display: flex;
+        justify-content: space-evenly;
     }
 }
 

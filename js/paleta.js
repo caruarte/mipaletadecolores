@@ -250,6 +250,28 @@ function tupaleta(colores) {
     }
 }
 
+btn_guardar.onclick = () => { // Click en segui combinando
+    /**domtoimage.toJpeg(tupaleta_screen.querySelector("#tupaleta"), {
+            quality: 1,
+            bgcolor: "#ffffff"
+        })
+        .then(function(dataUrl) {
+            var link = document.createElement('a');
+            link.download = 'my-image-name.jpeg';
+            link.href = dataUrl;
+            link.click();
+        });**/
+    html2canvas(document.querySelector("#imagen_tupaleta"), {
+        windowWidth: 1250
+    }).then(function(canvas) {
+        var link = document.createElement('a');
+        link.download = 'mipaleta.png';
+        link.href = canvas.toDataURL()
+        link.click();
+
+    });
+}
+
 btn_paleta.onclick = () => { // Click en segui combinando
     colores_elegidos = [];
     while (true) {

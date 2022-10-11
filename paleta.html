@@ -67,11 +67,17 @@
             </div>
         </div>
         <div id="tupaleta_screen" class="ocultar">
-
-            <h2>Mi Paleta de Colores</h2>
-            <div id="tupaleta"></div>
-            <div id="btn_paleta" class="centrar">
-                <button class="boton boton-verde">Seguí combinando</button>
+            <div id="imagen_tupaleta">
+                <h2>Mi Paleta de Colores</h2>
+                <div id="tupaleta"></div>
+            </div>
+            <div id="botones_tupaleta">
+                <div id="btn_guardar" class="centrar">
+                    <button class="boton boton-amarillo">Guardar paleta</button>
+                </div>
+                <div id="btn_paleta" class="centrar">
+                    <button class="boton boton-verde">Seguí combinando</button>
+                </div>
             </div>
         </div>
 
@@ -93,6 +99,7 @@
         </div>
     </footer>
     <script src="https://scrtwpns.com/mixbox.js"></script>
+    <script src="node_modules/html2canvas/dist/html2canvas.js"></script>
     <script src="js/paleta.js"></script>
 </body>
 
