@@ -161,7 +161,6 @@ function paletaElegida(paleta) { // Si elegis una paleta
 
         paleta_elegida[i].addEventListener('click', (e) => { // Si hace click en un color
             if (state == "dos_colores") {
-                console.log(colores[paleta_elegida[i].id]);
                 if (!paleta_elegida[i].classList.contains("color_elegido") && colores_elegidos.length < 2) {
                     paleta_elegida[i].classList.add("color_elegido")
                     colores_elegidos.push(paleta_elegida[i].id);
@@ -210,7 +209,6 @@ function combinar(colores_elegidos) {
     }
 
     let mixed = mixbox.lerp(colores[colores_elegidos[0]]["color"], colores[colores_elegidos[1]]["color"], 0.5);
-    console.log(mixed);
     let color = document.createElement("div");
     color.classList.add("circulo");
     color.id = "color" + (Object.keys(colores).length + 1);
