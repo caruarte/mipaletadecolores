@@ -400,6 +400,48 @@ input:not([type="submit"]) {
 }
 
 
+/** CHARLA **/
+
+#charla iframe {
+    max-width: 100%;
+}
+
+#charla_screen {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/** CONTACTO **/
+
+#contacto_screen {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+#contacto_screen a {
+    color: #3f72ff;
+    display: inline-block;
+    font-size: 2.5rem;
+    margin: .5rem 0;
+    width: auto;
+    padding: 0;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+#contacto_screen p {
+    font-size: 2.5rem;
+    margin: .5rem 0;
+}
+
+#contacto_screen a:hover {
+    color: #132ec7;
+    margin-bottom: .5rem;
+}
+
+
 /** UTILIDADES **/
 
 .ocultar {
